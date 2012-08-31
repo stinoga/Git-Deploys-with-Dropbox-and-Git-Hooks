@@ -1,0 +1,3 @@
+#Wordpress ignores
+local-config.php
+wp-content/w3tc/*
