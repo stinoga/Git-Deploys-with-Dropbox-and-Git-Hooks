@@ -12,25 +12,31 @@ Prerequisites
 5. Install git (I use homebrew to install)
 6. Install Dropbox
 
-Setup
+Setup Dropbox Sync
 --------------
 1. Setup git repo in the root of your local wordpress install.
-
-    cd [wordpress root directory]
-    git init
-
+```
+cd [wordpress root directory]
+git init
+```
 2. Add wordpress files to .gitignore file in root directory. These will be the files we'll keep from deploying later.
 3. Make a repo folder in Dropbox to hold your multitude of kick ass git repos. Then create your repo and initialize it.
-    cd ~/Dropbox
-    mkdir gitRepos
-    cd gitRepos
-    mkdir repoName.git
-    cd repoName.git
-    git --bare init
-4. Add git remote for Dropbox, then push your branch there. In my case, I'm using the branch master, which is the default. This remote target will be our server we keep our repo synced to.
+```
+cd ~/Dropbox
+mkdir gitRepos
+cd gitRepos
+mkdir repoName.git
+cd repoName.git
+git --bare init
+```
+4. Add git remote for Dropbox, then push your branch there. In my case, I'm using the branch master, which is the default. This remote target will be our server we keep our repo synced to. You can read my full documentation on cloning and then pulling from this remote [here](https://gist.github.com/3340157).
 ```
 cd [wordpress root directory]
 git remote add
 git add remote dropbox file:///$HOME/Dropbox/gitRepos/repoName.git
 git push dropbox master
+```
+5. Add your post-commit file into the hooks folder in your repo. This will push a mirrored version of all committed files to your remote repo after they are commited, keeping you backed up in Dropbox.
+```
+[wordpress root directory]/.git/hooks
 ```
