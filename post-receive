@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Replace this variable with your remote repo name
+FOLDER=wwwRoot
+
+echo
+echo "==== Transferring changes to $FOLDER ===="
+echo
+
+# Clearing git env
+unset GIT_DIR
+unset GIT_WORK_TREE
+cd ~/$FOLDER
+git pull
+
+echo
+echo "==== That's all, folks. ===="
+echo

@@ -1,16 +1,13 @@
-Git Deploys with Dropbox and Wordpress
+Git Deploys with Dropbox and Git Hooks
 ======================================
 
 Setting up git to automagically mirror to dropbox as a backup, and deploy to a remote server when you are ready to push. This can work with any website, but I'm using Wordpress as an example. In the same vein, the remotes are named dropbox and live for simplicity's sake, but you can name them whatever tickles your fancy.
 
 Prerequisites
 --------------
-1. Download MAMP
-2. Download wordress
-3. Create MAMP database
-4. Setup local database info for MAMP in wp-config.php
-5. Install git (I use homebrew to install)
-6. Install Dropbox
+1. Install git (I use homebrew to install)
+2. Install Dropbox
+3. Setup SSH access on your site
 
 Setup Dropbox Sync
 --------------
@@ -19,7 +16,7 @@ Setup Dropbox Sync
 cd [wordpress root directory]
 git init
 ```
-2. Add wordpress files to .gitignore file in root directory. These will be the files we'll keep from deploying later.
+2. Add any files you want to ignore to the .gitignore file in root directory. These will be the files we'll keep from deploying later. You'll want to do an inventory of any files you have locally and don't want to go live.
 3. Make a repo folder in Dropbox to hold your multitude of kick ass git repos. Then create your repo and initialize it.
 ```
 cd ~/Dropbox
@@ -43,14 +40,34 @@ git push dropbox master
 
 Setup Git Deployment
 --------------
-1. SSH into your server, and create a remote repo.
+1. SSH into your server, and create a remote repo. I am creating it in the root directory for this example.
 ```
+cd ~
 mkdir repoName.git
 cd repoName.git
 git init --bare
 ```
-2. Add git remote for live server. You will need to replace the user and host vars below with your site info.
+2. While still in your repo folder on the server, create a post-receive file and add in the content from this repo. I'm using vi to do this, but you can use whatever you like.
+```
+vi hooks/post-receive
+```
+3. Clone your newly create repo into the folder that houses your site. Change my wwwRoot var below to the path to that folder.
+```
+cd ~
+git clone repoName.git [wwwRoot]
+exit
+```
+4. Add git remote for live server. You will need to replace the user and host vars below with your site info.
 ```
 cd [wordpress root directory]
 git remote add live ssh://[user]@[host]/~/mysite.git
 ```
+5. Push to your site!
+```
+git push live master
+```
+
+Notes
+-----
+
+* Once you run your first git push of your branch to either the dropbox or live remotes, you don't HAVE to specify a branch, aka "git push live." This is because git will push all changes on the local branches that have matching remote branches at your target remote.
