@@ -15,8 +15,10 @@ Prerequisites
 Setup
 --------------
 1. Setup git repo in the root of your local wordpress install.
+
     cd [wordpress root directory]
     git init
+
 2. Add wordpress files to .gitignore file in root directory. These will be the files we'll keep from deploying later.
 3. Make a repo folder in Dropbox to hold your multitude of kick ass git repos. Then create your repo and initialize it.
     cd ~/Dropbox
