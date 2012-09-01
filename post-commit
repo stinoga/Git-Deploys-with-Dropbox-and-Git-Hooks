@@ -1,0 +1,15 @@
+#!/bin/sh
+# This hook is used to push a mirrored version of all committed files to your remote repo after they are commited
+
+# Replace this variable with your remote repo name
+REPO=dropbox
+
+echo
+echo "==== Sending changes to $REPO repo ===="
+echo
+
+git push --mirror $REPO;
+
+echo
+echo "==== Donezo ===="
+echo
