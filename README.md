@@ -13,7 +13,7 @@ Prerequisites
 
 Setup
 --------------
-1. Setup git repo
+1. Setup git repo:
 	cd [wordpress root directory]
 	git init
 2. Add wordpress files to .gitignore
