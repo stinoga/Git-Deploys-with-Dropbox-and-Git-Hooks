@@ -13,8 +13,8 @@ Setup Dropbox Sync
 --------------
 1. Setup git repo in the root of your local wordpress install.
 
-    cd [wordpress root directory]
-    git init
+        cd [wordpress root directory]
+        git init
 
 2. Add any files you want to ignore to the .gitignore file in root directory. These will be the files we'll keep from deploying later. You'll want to do an inventory of any files you have locally and don't want to go live.
 3. Make a repo folder in Dropbox to hold your multitude of kick ass git repos. Then create your repo and initialize it.
