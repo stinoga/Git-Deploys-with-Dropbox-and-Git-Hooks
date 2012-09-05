@@ -18,54 +18,54 @@ Setup Dropbox Sync
 
 2. Add any files you want to ignore to the .gitignore file in root directory. These will be the files we'll keep from deploying later. You'll want to do an inventory of any files you have locally and don't want to go live.
 3. Make a repo folder in Dropbox to hold your multitude of kick ass git repos. Then create your repo and initialize it.
-```
-cd ~/Dropbox
-mkdir gitRepos
-cd gitRepos
-mkdir repoName.git
-cd repoName.git
-git init --bare
-```
+
+        cd ~/Dropbox
+        mkdir gitRepos
+        cd gitRepos
+        mkdir repoName.git
+        cd repoName.git
+        git init --bare
+
 4. Add git remote for Dropbox, then push your branch there. In my case, I'm using the branch master, which is the default. This remote target will be our server we keep our repo synced to. You can read my full documentation on cloning and then pulling from this remote [here](https://gist.github.com/3340157).
-```
-cd [wordpress root directory]
-git remote add
-git add remote dropbox file:///$HOME/Dropbox/gitRepos/repoName.git
-git push dropbox master
-```
+
+        cd [wordpress root directory]
+        git remote add
+        git add remote dropbox file:///$HOME/Dropbox/gitRepos/repoName.git
+        git push dropbox master
+
 5. Add your post-commit file into the hooks folder in your repo. This will push a mirrored version of all committed files to your remote repo after they are commited, keeping you backed up in Dropbox.
-```
-[wordpress root directory]/.git/hooks
-```
+
+        [wordpress root directory]/.git/hooks
+
 
 Setup Git Deployment
 --------------
 1. SSH into your server, and create a remote repo. I am creating it in the root directory for this example.
-```
-cd ~
-mkdir repoName.git
-cd repoName.git
-git init --bare
-```
+
+        cd ~
+        mkdir repoName.git
+        cd repoName.git
+        git init --bare
+
 2. While still in your repo folder on the server, create a post-receive file and add in the content from this repo. I'm using vi to do this, but you can use whatever you like.
-```
-vi hooks/post-receive
-```
+
+        vi hooks/post-receive
+
 3. Clone your newly create repo into the folder that houses your site. Change my wwwRoot var below to the path to that folder.
-```
-cd ~
-git clone repoName.git [wwwRoot]
-exit
-```
+
+        cd ~
+        git clone repoName.git [wwwRoot]
+        exit
+
 4. Add git remote for live server. You will need to replace the user and host vars below with your site info.
-```
-cd [wordpress root directory]
-git remote add live ssh://[user]@[host]/~/mysite.git
-```
+
+        cd [wordpress root directory]
+        git remote add live ssh://[user]@[host]/~/mysite.git
+
 5. Push to your site!
-```
-git push live master
-```
+
+        git push live master
+
 
 Notes
 -----
