@@ -46,7 +46,7 @@ Setup Git Deployment
         cd repoName.git
         git init --bare
 
-2. While still in your repo folder on the server, create a post-receive file and add in the content from this repo. I'm using vi to do this, but you can use whatever you like.
+2. While still in your repo folder on the server, create a post-receive file and add in the content from this repo. You'll want to update the FOLDER variable to the directory you are pushing to. I'm using vi to do this, but you can use whatever you like.
 
         vi hooks/post-receive
 
