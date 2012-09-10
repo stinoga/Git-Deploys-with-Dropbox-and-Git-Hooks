@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Replace this variable with your remote repo name
+# Replace this variable with the path to your site root
+# This is where your live site lives
 FOLDER=wwwRoot
 
 echo
