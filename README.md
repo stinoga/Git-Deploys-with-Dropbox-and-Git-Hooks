@@ -29,7 +29,6 @@ Setup Dropbox Sync
 4. Add git remote for Dropbox, then push your branch there. In my case, I'm using the branch master, which is the default. This remote target will be our server we keep our repo synced to. You can read my full documentation on cloning and then pulling from this remote [here](https://gist.github.com/3340157).
 
         cd [wordpress root directory]
-        git remote add
         git add remote dropbox file:///$HOME/Dropbox/gitRepos/repoName.git
         git push dropbox master
 
