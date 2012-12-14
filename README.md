@@ -46,9 +46,10 @@ Setup Git Deployment
         cd repoName.git
         git init --bare
 
-2. While still in your repo folder on the server, create a post-receive file and add in the content from this repo. You'll want to update the FOLDER variable to the directory you are pushing to. I'm using vi to do this, but you can use whatever you like.
+2. While still in your repo folder on the server, create a post-receive file and add in the content from this repo. You'll want to update the FOLDER variable to the directory you are pushing to. I'm using vi to do this, but you can use whatever you like. You may also need to set the correct permissions on this file so we can access it. Use chmod for this.
 
         vi hooks/post-receive
+        chmod 775 hooks/post-receive
 
 3. Clone your newly create repo into the folder that houses your site. Change my wwwRoot var below to the path to that folder.
 
