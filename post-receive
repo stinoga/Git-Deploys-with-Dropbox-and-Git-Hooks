@@ -5,13 +5,19 @@
 FOLDER=wwwRoot
 
 echo
-echo "==== Transferring changes to $FOLDER ===="
+echo "==== Committing/adding outstanding changes to $FOLDER ===="
 echo
 
 # Clearing git env
 unset GIT_DIR
 unset GIT_WORK_TREE
 cd ~/$FOLDER
+git commit -am "committing prior to next deployment"
+
+echo
+echo "==== Transferring changes to $FOLDER ===="
+echo
+
 git pull
 
 echo
