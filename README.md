@@ -3,6 +3,10 @@ Git Deploys with Dropbox and Git Hooks
 
 Setting up git to automagically mirror to dropbox as a backup, and deploy to a remote server when you are ready to push. The remotes are named dropbox and live for simplicity's sake, but you can name them whatever tickles your fancy.
 
+Disclaimer
+----------
+This is not a replacement for a remote repository collaboration tool such as Github or Bitbucket. If you'd like to simply backup your code to Dropbox, then this is a simple way to do so. If you are collaborating with other developers, this may not be the best route for you.
+
 Prerequisites
 --------------
 1. Install git (I use homebrew to install)
